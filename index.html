@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VERHAM - Grow With Us</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #1a0b02;
+      background: linear-gradient(180deg, #2a0e02 0%, #120501 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      padding: 15px;
+    }
+
+    .card-container {
+      width: 100%;
+      max-width: 400px;
+      background: linear-gradient(180deg, #52250d 0%, #2e1104 100%);
+      border: 1px solid rgba(255, 140, 0, 0.2);
+      border-radius: 35px;
+      padding: 30px 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .profile-outer-ring {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,165,0,0.8) 0%, rgba(255,140,0,0.2) 70%, transparent 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 10px;
+      box-shadow: 0 0 25px rgba(255, 140, 0, 0.4);
+    }
+
+    .profile-img-container {
+      width: 145px;
+      height: 145px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #ffaa00;
+    }
+
+    .profile-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .status-badge {
+      position: absolute;
+      bottom: -8px;
+      background: #e58e26;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 4px 16px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .main-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #38ef7d;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      text-shadow: 0 0 10px rgba(56, 239, 125, 0.3);
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #cfb19b;
+      margin-bottom: 25px;
+      font-weight: 400;
+    }
+
+    .cta-button {
+      width: 100%;
+      background: linear-gradient(180deg, #d48b47 0%, #aa5c1d 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 18px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      transition: transform 0.2s, filter 0.2s;
+      margin-bottom: 30px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    .cta-button:active {
+      transform: translateY(1px);
+    }
+
+    .airplane-icon {
+      font-size: 22px;
+      transform: rotate(-30deg);
+    }
+
+    .divider-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .divider-text {
+      font-size: 11px;
+      color: #e58e26;
+      font-weight: 700;
+      padding: 0 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .timer-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 10px 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .timer-number {
+      font-size: 26px;
+      font-weight: 800;
+      color: #38ef7d;
+      margin-bottom: 2px;
+    }
+
+    .timer-label {
+      font-size: 9px;
+      color: #aa9081;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .disclaimer {
+      font-size: 11px;
+      color: #a38775;
+      line-height: 1.5;
+    }
+
+    .disclaimer strong {
+      color: #cccccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-container">
+    <!-- Profile Image Section -->
+    <div class="profile-outer-ring">
+      <div class="profile-img-container">
+        <!-- Aap yahan apni image URL daal sakte hain -->
+        <img src="https://api.dicebear.com/7.x/bottts/svg?seed=VERHAM" alt="VERHAM Profile">
+      </div>
+      <div class="status-badge">
+        <span class="status-dot"></span> ONLINE
+      </div>
+    </div>
+
+    <!-- Title Section -->
+    <h1 class="main-title">VERHAM</h1>
+    <p class="subtitle">Tips & Tricks</p>
+
+    <!-- Join Telegram Button with your link -->
+    <a href="https://t.me/earnwithadityaaaa" class="cta-button" target="_blank" rel="noopener noreferrer">
+      <span class="airplane-icon">✈️</span> Join Telegram
+    </a>
+
+    <!-- Divider -->
+    <div class="divider-container">
+      <div class="divider-line"></div>
+      <span class="divider-text">READY TO JOIN</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="timer-grid">
+      <div class="timer-box">
+        <span class="timer-number" id="days">00</span>
+        <span class="timer-label">DAYS</span>
+      </div>
+      <div class="timer-box">
+        <span class="timer-number" id="hours">00</span>
+        <span class="timer-label">HOURS</span>
+      </div>
+      <div class="timer-box">
+        <span class="timer-number" id="minutes">00</span>
+        <span class="timer-label">MINS</span>
+      </div>
+      <div class="timer-box">
+        <span class="timer-number" id="seconds">04</span>
+        <span class="timer-label">SECS</span>
+      </div>
+    </div>
+
+    <!-- Disclaimer Section -->
+    <p class="disclaimer">
+      <strong>Disclaimer:</strong> This page is an independent community landing page and is not affiliated with or endorsed by Telegram, Meta, Facebook, or any other platform. Information and content provided are for educational purposes.
+    </p>
+  </div>
+
+  <script>
+    // Countdown Timer Logic
+    let totalSeconds = 4; // Screen ke hisaab se initial timer set kiya hai
+
+    function updateTimer() {
+      const days = Math.floor(totalSeconds / (3600 * 24));
+      const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      document.getElementById('days').innerText = String(days).padStart(2, '0');
+      document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+
+      if (totalSeconds > 0) {
+        totalSeconds--;
+      }
+    }
+
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
